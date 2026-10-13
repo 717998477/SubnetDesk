@@ -79,8 +79,8 @@ jobs:
     secrets: inherit
     with:
       upload-artifact: true
-      publish-release: true
-      build-mobile: false
+      publish-release: false
+      build-mobile: true
       upload-tag: "nightly"
 
   refresh-nightly-tag:

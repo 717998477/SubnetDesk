@@ -1158,11 +1158,11 @@ jobs:
           fi
 
       - name: Upload Artifacts
-        if: env.ANDROID_SIGNING_KEY != '' && env.UPLOAD_ARTIFACT == 'true'
+        if: env.UPLOAD_ARTIFACT == 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: subnetdesk-${{ env.VERSION }}-${{ matrix.job.arch }}.apk
-          path: ${{steps.sign-rustdesk.outputs.signedReleaseFile}}
+          path: ./signed-apk/*.apk
 
       - name: Publish signed apk package
         if: env.ANDROID_SIGNING_KEY != '' && env.PUBLISH_RELEASE == 'true'
@@ -1372,11 +1372,11 @@ jobs:
           fi
 
       - name: Upload Artifacts
-        if: env.ANDROID_SIGNING_KEY != '' && env.UPLOAD_ARTIFACT == 'true'
+        if: env.UPLOAD_ARTIFACT == 'true'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: subnetdesk-${{ env.VERSION }}-universal${{ env.suffix }}.apk
-          path: ${{steps.sign-rustdesk.outputs.signedReleaseFile}}
+          path: ./signed-apk/*.apk
 
       - name: Publish signed apk package
         if: env.ANDROID_SIGNING_KEY != '' && env.PUBLISH_RELEASE == 'true'
